@@ -74,9 +74,8 @@ const usersPut = async (req, res) => {
 
 const usersDelete = async (req, res) => {
     const { id } = req.params;
-   //  Esto sirve para eliminar un documento: const user = await User.findByIdAndDelete(id);
+    const user = await User.findByIdAndDelete(id);
 
-   const  user = await User.findByIdAndUpdate(id, { status :false });
     res.json({ 'msg': 'delete', user })
 }
 
