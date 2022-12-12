@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { body, check } = require('express-validator');
 const bodyParser = require('body-parser');
 const { validateFields, validateJWT } = require('../middlewares');
-const { modelsGetById, modelsPaginadoPost, modelsPost, modelsPutStock, modelsPut} = require('../controllers/model.controllers');
+const { modelsGetById, modelsPaginatePost, modelsPost, modelsPutStock, modelsPut} = require('../controllers/model.controllers');
 const jsonParser = bodyParser.json();
 
 const { modelExists, brandExists } = require('../helpers/validate-db');
@@ -22,9 +22,9 @@ router.post('/', [validateJWT,
     check('brand').custom(brandExists),
     validateFields], modelsPost);
 
-router.post('/paginado', [
+router.post('/paginate', [
     jsonParser,
-    validateFields], modelsPaginadoPost);
+    validateFields], modelsPaginatePost);
 
 
 router.put('/:id', [validateJWT,

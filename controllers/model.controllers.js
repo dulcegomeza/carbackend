@@ -1,6 +1,6 @@
 const { Model } = require('../models');
 
-const modelsPaginadoPost = async(req, res) =>{
+const modelsPaginatePost = async(req, res) =>{
 
     const {limite = 9, desde=0, pag=1} = req.body;
 
@@ -92,7 +92,7 @@ const modelsPutStock = async (req, res) => {
 module.exports = {
     modelsPut,
     modelsPutStock,
-    modelsPaginadoPost,
+    modelsPaginatePost,
     modelsPost,
     modelsGetById
 }
