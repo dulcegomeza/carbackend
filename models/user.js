@@ -40,6 +40,10 @@ const userSchema = Schema({
     password :{
         type: String,
         required: [true, 'password required']
+    },
+    status :{
+        type: Boolean,
+        default : true
     }
 })
 
@@ -48,5 +52,6 @@ userSchema.methods.toJSON = function (){
     user.uid = _id;
     return user;
 }
+
 
 module.exports = model('User', userSchema);

@@ -13,16 +13,19 @@ const login = async (req, res) => {
             return  res.status(400).json({msg: 'Email/Password incorrect'});
         }
 
+        if(!user.status){
+            return  res.status(400).json({msg: 'Email/Password incorrect -status'});
+        }
+
         const validPassword = bcryptjs.compareSync(password, user.password);
 
         if(!validPassword){
             return  res.status(400).json({msg: 'Email/Password incorrect -password'});
         }
-        console.log(user._id);
-        const token = await generateJWT(user._id);
+
+        const token = await generateJWT(user.id);
         res.json({ user, token});
     } catch (error) {
-        console.log(error);
         res.status(500).json({msg: 'speak to the admin'});
     }
 
