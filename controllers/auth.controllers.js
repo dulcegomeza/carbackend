@@ -18,8 +18,8 @@ const login = async (req, res) => {
         if(!validPassword){
             return  res.status(400).json({msg: 'Email/Password incorrect -password'});
         }
-        console.log(user.uid);
-        const token = await generateJWT(user.uid);
+        console.log(user._id);
+        const token = await generateJWT(user._id);
         res.json({ user, token});
     } catch (error) {
         console.log(error);
