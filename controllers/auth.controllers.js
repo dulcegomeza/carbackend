@@ -14,10 +14,6 @@ const login = async (req, res) => {
             return  res.status(400).json({msg: 'Email/Password incorrect'});
         }
 
-        if(!user.status){
-            return  res.status(400).json({msg: 'Email/Password incorrect -status', 'name':user.status});
-        }
-
         const validPassword = bcryptjs.compareSync(password, user.password);
 
         if(!validPassword){
